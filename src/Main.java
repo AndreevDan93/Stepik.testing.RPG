@@ -158,7 +158,7 @@ class Archer extends Hero {
     public void defense(Enemy enemy) {
         if (enemy.hp > 0 && this.hp > 0) {
             int r = (int) (Math.random() * 100);
-            if (enemy.hp > 0 && r <= 30) this.hp -= enemy.damage;
+            if (enemy.hp > 0 && r < 30) this.hp -= enemy.damage;
         }
         if (this.hp <= 0) System.out.println("Ваш герой был убит");
 
@@ -201,7 +201,7 @@ class Magician extends Hero {
         //базовые значение
     }
 
-    private ArrayList<Item> casts = new ArrayList<>();
+    ArrayList<Item> casts = new ArrayList<>();
     /*
         класс должен обладать всеми свойствами героя при создании маг должен обладать следующими характеристиками:
         здоровье - 100, мана - 5000, сила - 5, ловкость - 30, интеллект - 300, опыт 0, урон - 40.
@@ -296,6 +296,7 @@ public class Main {
             myHero.openItem(item);  // герои получает предмет в руки
         }
         System.out.println("Всего собрано: " + myHero.items.size());
+        System.out.println ("Всего заклинаний: " + ((Magician) myHero).casts.size());
 
         // бой!
         int count = 1;
